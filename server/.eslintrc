@@ -8,6 +8,9 @@
          "jsx": true
       }
    },
+   "env": {
+      "browser": true
+   },
    "rules": {
       "@typescript-eslint/indent": ["error", 3],
       "indent": [

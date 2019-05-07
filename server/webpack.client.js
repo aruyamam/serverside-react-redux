@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
    // Tell webpack the root file of our
    // serve appliication
-   entry: './src/client/client.ts',
+   entry: './src/client/client.tsx',
 
    output: {
       filename: 'bundle.js',
