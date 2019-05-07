@@ -5,12 +5,24 @@ import Home from './client/components/Home';
 
 const app = express();
 
+app.use(express.static('public'));
+
 app.get(
    '/',
    (req, res): void => {
       const content = renderToString(React.createElement(Home));
 
-      res.send(content);
+      const html = `
+         <html>
+            <head></head>
+            <body>
+               <div>${content}</div>
+               <script src="bundle.js"></script>
+            </body>
+         </html>
+      `;
+
+      res.send(html);
    },
 );
 
