@@ -5,8 +5,9 @@ import { Request } from 'express';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import Routes from '../client/Routes';
+import { AppState } from './createStore';
 
-export default (req: Request, store: Store): string => {
+export default (req: Request, store: Store<AppState>): string => {
    const content = renderToString(
       <Provider store={store}>
          <StaticRouter location={req.path} context={{}}>
