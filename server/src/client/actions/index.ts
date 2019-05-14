@@ -7,7 +7,6 @@ const fetchUsers: ActionCreator<ThunkAction<any, User[], null, FetchUsersAction>
    dispatch: Dispatch,
 ) => {
    const res = await axios.get('https://react-ssr-api.herokuapp.com/users');
-   console.log(res);
 
    return dispatch({
       type: ActionTypes.FETCH_USERS,
