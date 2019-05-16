@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Store } from 'redux';
 import fetchUsers from '../actions';
 import { AppState } from '../../helpers/createStore';
-import { User } from '../actions/types';
+import { User, FetchUsersAction } from '../actions/types';
 
 interface Props {
    fetchUsers: typeof fetchUsers;
@@ -34,6 +35,12 @@ class UsersList extends Component<Props> {
 function mapStateToProps(state: AppState): { users: User[] } {
    return { users: state.users };
 }
+
+function loadData(store: any): Promise<FetchUsersAction> {
+   return store.dispatch(fetchUsers());
+}
+
+export { loadData };
 
 export default connect(
    mapStateToProps,
