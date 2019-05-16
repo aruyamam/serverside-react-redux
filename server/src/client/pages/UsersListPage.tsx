@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Store } from 'redux';
 import fetchUsers from '../actions';
 import { AppState } from '../../helpers/createStore';
 import { User, FetchUsersAction } from '../actions/types';
@@ -40,9 +39,10 @@ function loadData(store: any): Promise<FetchUsersAction> {
    return store.dispatch(fetchUsers());
 }
 
-export { loadData };
-
-export default connect(
-   mapStateToProps,
-   { fetchUsers },
-)(UsersList);
+export default {
+   loadData,
+   component: connect(
+      mapStateToProps,
+      { fetchUsers },
+   )(UsersList),
+};
