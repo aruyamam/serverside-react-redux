@@ -5,6 +5,7 @@ import { Request } from 'express';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
+import serialize from 'serialize-javascript';
 import Routes from '../client/Routes';
 import { AppState } from './createStore';
 
@@ -22,6 +23,9 @@ export default (req: Request, store: Store<AppState>): string => {
          <head></head>
          <body>
             <div id="root">${content}</div>
+            <script>
+               window.INITIAL_STATE = ${serialize(store.getState())}
+            </script>
             <script src="bundle.js"></script>
          </body>
       </html>
