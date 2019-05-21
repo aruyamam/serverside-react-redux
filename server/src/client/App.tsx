@@ -1,10 +1,11 @@
 import React from 'react';
 import { renderRoutes, RouteConfigComponentProps } from 'react-router-config';
+import Header from './components/Header';
 
 const App = ({ route }: RouteConfigComponentProps): JSX.Element => (
    <div>
-      <h1>Im a header</h1>
-      {renderRoutes(route.routes)}
+      <Header />
+      {renderRoutes(route && route.routes)}
    </div>
 );
 
