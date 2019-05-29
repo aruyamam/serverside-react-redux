@@ -3,10 +3,11 @@ import thunk from 'redux-thunk';
 import axios from 'axios';
 import { Request } from 'express';
 import reducers from '../client/reducers';
-import { User } from '../client/actions/types';
+import { AuthState, User } from '../client/actions/types';
 
 export interface AppState {
    users: User[];
+   auth: AuthState;
 }
 
 export default (req: Request): Store => {

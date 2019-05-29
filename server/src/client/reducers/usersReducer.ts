@@ -1,7 +1,7 @@
-import { Reducer } from 'redux';
+import { AnyAction, Reducer } from 'redux';
 import { ActionTypes, FetchUsersAction, User } from '../actions/types';
 
-const usersReducer: Reducer<User[], FetchUsersAction> = (state = [], action): User[] => {
+const usersReducer: Reducer<User[], AnyAction> = (state = [], action): User[] => {
    switch (action.type) {
       case ActionTypes.FETCH_USERS:
          return action.payload;

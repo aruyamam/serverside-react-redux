@@ -1,17 +1,28 @@
-import { ActionCreator, Dispatch } from 'redux';
+import { ActionCreator, Dispatch, AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { AxiosInstance } from 'axios';
-import { ActionTypes, FetchUsersAction, User } from './types';
+import {
+   ActionTypes, FetchUsersAction, FetchCurrentUserAction, User,
+} from './types';
 
-const fetchUsers: ActionCreator<
+export const fetchUsers: ActionCreator<
 ThunkAction<any, User[], AxiosInstance, FetchUsersAction>
 > = () => async (dispatch: Dispatch, getState, api) => {
    const res = await api.get('/users');
 
-   return dispatch({
+   dispatch({
       type: ActionTypes.FETCH_USERS,
       payload: res.data,
    });
 };
 
-export default fetchUsers;
+export const fetchCurrentUser: ActionCreator<
+ThunkAction<any, Promise<any>, AxiosInstance, any>
+> = () => async (dispatch, getState, api) => {
+   const res = await api.get('/current_user');
+
+   dispatch({
+      type: ActionTypes.FETCH_CURRENT_USER,
+      payload: res,
+   });
+};

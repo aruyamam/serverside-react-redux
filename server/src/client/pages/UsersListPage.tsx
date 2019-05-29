@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import fetchUsers from '../actions';
+import { fetchUsers } from '../actions';
 import { AppState } from '../../helpers/createStore';
 import { User, FetchUsersAction } from '../actions/types';
 
