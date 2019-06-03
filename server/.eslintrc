@@ -27,6 +27,8 @@
          1,
          { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
       ],
+      "no-param-reassign": "warn",
+      "no-shadow": "warn",
       "@typescript-eslint/explicit-function-return-type": "off"
    },
    "settings": {

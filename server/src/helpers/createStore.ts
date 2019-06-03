@@ -7,7 +7,7 @@ import { AuthState, User } from '../client/actions/types';
 
 export interface AppState {
    users: User[];
-   auth: AuthState;
+   auth: AuthState | null;
 }
 
 export default (req: Request): Store => {

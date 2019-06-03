@@ -1,3 +1,5 @@
+import { StaticContext } from 'react-router';
+
 export enum ActionTypes {
    FETCH_USERS = 'fetch_users',
    FETCH_CURRENT_USER = 'fetch_current_user',
@@ -22,4 +24,8 @@ export interface FetchUsersAction {
 export interface FetchCurrentUserAction {
    type: ActionTypes.FETCH_CURRENT_USER;
    payload: Promise<any>;
+}
+
+export interface Context extends StaticContext {
+   notFound?: boolean;
 }

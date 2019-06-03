@@ -1,9 +1,10 @@
 import express from 'express';
-import { matchRoutes } from 'react-router-config';
+import { matchRoutes, RouteConfig } from 'react-router-config';
 import proxy from 'express-http-proxy';
 import Routes from './client/Routes';
 import renderer from './helpers/renderer';
 import createStore from './helpers/createStore';
+import { Context } from './client/actions/types';
 
 const app = express();
 
@@ -26,10 +27,19 @@ app.get(
    (req, res): void => {
       const store = createStore(req);
 
-      const promises = matchRoutes(Routes, req.path).map(({ route }) => (route.loadData ? route.loadData(store) : null));
+      const promises = matchRoutes(Routes as RouteConfig[], req.path).map(({ route }) => {
+         return route.loadData ? route.loadData(store) : null;
+      });
 
       Promise.all(promises).then(() => {
-         res.send(renderer(req, store));
+         const context: Context = {};
+         const content = renderer(req, store, context);
+
+         if (context.notFound) {
+            res.status(404);
+         }
+
+         res.send(content);
       });
    },
 );

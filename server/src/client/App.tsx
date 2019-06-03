@@ -1,4 +1,5 @@
 import React from 'react';
+import { Store } from 'redux';
 import { renderRoutes, RouteConfigComponentProps } from 'react-router-config';
 import Header from './components/Header';
 import { fetchCurrentUser } from './actions';
