@@ -8,6 +8,7 @@ import { AuthState, User } from '../client/actions/types';
 export interface AppState {
    users: User[];
    auth: AuthState | null;
+   admins: any;
 }
 
 export default (req: Request): Store => {

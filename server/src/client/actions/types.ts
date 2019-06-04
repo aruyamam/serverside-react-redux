@@ -1,8 +1,10 @@
 import { StaticContext } from 'react-router';
+import { AxiosInstance } from 'axios';
 
 export enum ActionTypes {
    FETCH_USERS = 'fetch_users',
    FETCH_CURRENT_USER = 'fetch_current_user',
+   FETCH_ADMINS = 'fetch_admins',
 }
 
 export interface User {
@@ -24,6 +26,11 @@ export interface FetchUsersAction {
 export interface FetchCurrentUserAction {
    type: ActionTypes.FETCH_CURRENT_USER;
    payload: Promise<any>;
+}
+
+export interface FetchAdminsAction {
+   type: ActionTypes.FETCH_ADMINS;
+   payload: AxiosInstance;
 }
 
 export interface Context extends StaticContext {

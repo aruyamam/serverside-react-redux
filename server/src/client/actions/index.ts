@@ -2,7 +2,11 @@ import { ActionCreator, Dispatch, AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { AxiosInstance } from 'axios';
 import {
-   ActionTypes, FetchUsersAction, FetchCurrentUserAction, User,
+   ActionTypes,
+   FetchUsersAction,
+   FetchCurrentUserAction,
+   User,
+   FetchAdminsAction,
 } from './types';
 
 export const fetchUsers: ActionCreator<
@@ -23,6 +27,17 @@ ThunkAction<any, Promise<any>, AxiosInstance, any>
 
    dispatch({
       type: ActionTypes.FETCH_CURRENT_USER,
+      payload: res,
+   });
+};
+
+export const fetchAdmins: ActionCreator<
+ThunkAction<Promise<AnyAction>, Promise<AnyAction>, AxiosInstance, any>
+> = () => async (dispatch, getState, api) => {
+   const res = await api.get('/admins');
+
+   return dispatch({
+      type: ActionTypes.FETCH_ADMINS,
       payload: res,
    });
 };
