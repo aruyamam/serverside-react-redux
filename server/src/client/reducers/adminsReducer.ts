@@ -1,6 +1,7 @@
-import { ActionTypes } from '../actions/types';
+import { Reducer } from 'redux';
+import { ActionTypes, Admin, FetchAdminsAction } from '../actions/types';
 
-const adminsReducer = (state = [], action: any) => {
+const adminsReducer: Reducer<Admin[], FetchAdminsAction> = (state = [], action) => {
    switch (action.type) {
       case ActionTypes.FETCH_ADMINS:
          return action.payload.data;
