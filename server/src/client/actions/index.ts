@@ -32,7 +32,7 @@ ThunkAction<any, Promise<any>, AxiosInstance, any>
 };
 
 export const fetchAdmins: ActionCreator<
-ThunkAction<Promise<AnyAction>, Promise<AnyAction>, AxiosInstance, any>
+ThunkAction<any, Promise<AnyAction>, AxiosInstance, any>
 > = () => async (dispatch, getState, api) => {
    const res = await api.get('/admins');
 
