@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchAdmins } from '../actions';
 import { AppState } from '../../helpers/createStore';
 import { Admin } from '../actions/types';
+import requireAuth from '../components/hocs/requireAuth';
 
 interface Props {
    fetchAdmins: typeof fetchAdmins;
@@ -38,6 +39,6 @@ export default {
    component: connect(
       mapStateToProps,
       { fetchAdmins },
-   )(AdminsListPage),
+   )(requireAuth(AdminsListPage)),
    loadData: ({ dispatch }: any) => dispatch(fetchAdmins()),
 };

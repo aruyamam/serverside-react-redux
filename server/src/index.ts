@@ -40,7 +40,10 @@ app.get(
       Promise.all(promises).then(() => {
          const context: Context = {};
          const content = renderer(req, store, context);
-
+         
+         if (context.url) {
+            return res.redirect(303, context.url);
+         }
          if (context.notFound) {
             res.status(404);
          }

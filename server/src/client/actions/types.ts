@@ -1,5 +1,5 @@
-import { StaticContext } from 'react-router';
-import { AxiosInstance, AxiosResponse } from 'axios';
+import { StaticRouterContext } from 'react-router';
+import { AxiosResponse } from 'axios';
 
 export enum ActionTypes {
    FETCH_USERS = 'fetch_users',
@@ -38,6 +38,6 @@ export interface FetchAdminsAction {
    payload: AxiosResponse<Admin[]>;
 }
 
-export interface Context extends StaticContext {
+export interface Context extends StaticRouterContext {
    notFound?: boolean;
 }
