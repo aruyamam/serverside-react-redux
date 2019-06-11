@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { fetchUsers } from '../actions';
 import { AppState } from '../../helpers/createStore';
 import { User, FetchUsersAction } from '../actions/types';
@@ -15,6 +16,17 @@ class UsersList extends Component<Props> {
       fetchUsers();
    }
 
+   private head() {
+      const { users } = this.props;
+
+      return (
+         <Helmet>
+            <title>{`${users.length} Users Loaded`}</title>
+            <meta property="og:title" content="Users App" />
+         </Helmet>
+      );
+   }
+
    private renderUsers(): JSX.Element[] {
       const { users } = this.props;
 
@@ -24,6 +36,7 @@ class UsersList extends Component<Props> {
    public render(): JSX.Element {
       return (
          <div>
+            {this.head()}
             Here&apos;s a big list of users;
             <ul>{this.renderUsers()}</ul>
          </div>
